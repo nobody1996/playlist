@@ -82,12 +82,8 @@ Song einlesen( void ) {
 
 /* Diese Funktion gibt alle Attribute eines Songs aus */
 void ausgeben( Song song, int i ) {
-	
-	
 
-		printf("\n%2d: %s - %s, %hu, %hu:%hu\n", i, song.interpret, song.titel, song.jahr, song.minuten, song.sekunden);
-
-	
+	printf("\n%2d: %s - %s, %hu, %hu:%hu\n", i, song.interpret, song.titel, song.jahr, song.minuten, song.sekunden);
 
 }
 /* Ende Teilaufgabe b) */
