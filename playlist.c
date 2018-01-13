@@ -1,3 +1,4 @@
+
 // Playlist-Verwaltung
 // Rahmenprogramm
 // Status: UnvollstÃĪndig
@@ -16,9 +17,9 @@ typedef char string[PLLEN];
 typedef struct {
 	string interpret;
 	string titel;
-	short jahr;
-	short minuten;
-	short sekunden;
+	unsigned short jahr;
+	unsigned short minuten;
+	unsigned short sekunden;
 
 } Song;
 /* Ende Teilaufgabe a) */
@@ -72,16 +73,18 @@ void speichern(Song *playlist, int laenge) {
 aus der Kommandozeile und gibt einen struct vom Typ Song zurueck */
 Song einlesen( void ) {	
 	Song neu;
-	printf("im folgenden Format song eingeben: \nInterpret Titel Jahr minuten Sekunden (Leerzeichen im Titel/Interpret durch '_' ersetzen!)");
-	scanf("%s %s %d %d %d", neu.interpret, neu.titel, neu.jahr, neu.minuten, neu.sekunden);
+	printf("\nim folgenden Format song eingeben: \nInterpret Titel Jahr minuten Sekunden (Leerzeichen im Titel/Interpret durch '_' ersetzen!)\n");
+	scanf("%s %s %hu %hu %hu", neu.interpret, neu.titel, &neu.jahr, &neu.minuten, &neu.sekunden);
+	printf("Eingelesen wurde: %s - %s, %hu, %hu:%hu", neu.interpret, neu.titel, neu.jahr, neu.minuten, neu.sekunden);
+	return neu;
 }
 
 
 /* Diese Funktion gibt alle Attribute eines Songs aus */
-// void ausgeben( Song song, int i ) {
+void ausgeben( Song song, int i ) {
 
 
-// }
+}
 /* Ende Teilaufgabe b) */
 
 
@@ -122,6 +125,8 @@ int main(void) {
 	Song playlist[PLLEN];
 	int laenge = 0, fertig = 0;
 	char eingabe;
+	Song save;
+	
 
 	srand(time(NULL));
 
@@ -144,7 +149,7 @@ int main(void) {
 		case 'l': laenge = laden(playlist); break;
 		case 's': speichern(playlist, laenge); break;
 		case 'b': fertig = 1; break;
-		case 'e': einlesen(); break;
+		case 'e': playlist[laenge]= einlesen();speichern(&playlist[laenge], laenge); break;
 		default: printf("Funktion nicht verfuebar!\n\n");
 		}
 
