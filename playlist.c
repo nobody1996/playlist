@@ -82,7 +82,12 @@ Song einlesen( void ) {
 
 /* Diese Funktion gibt alle Attribute eines Songs aus */
 void ausgeben( Song song, int i ) {
+	
+	
 
+		printf("\n%2d: %s - %s, %hu, %hu:%hu\n", i, song.interpret, song.titel, song.jahr, song.minuten, song.sekunden);
+
+	
 
 }
 /* Ende Teilaufgabe b) */
@@ -144,12 +149,13 @@ int main(void) {
 
 		scanf(" %c", &eingabe);
 		getchar();
-
+		
 		switch (eingabe) {
 		case 'l': laenge = laden(playlist); break;
 		case 's': speichern(playlist, laenge); break;
 		case 'b': fertig = 1; break;
-		case 'e': playlist[laenge]= einlesen();speichern(&playlist[laenge], laenge); break;
+		case 'e': playlist[laenge]= einlesen();speichern(&playlist, laenge); break;
+		case 'a': ausgeben(playlist[laenge], laenge);break;
 		default: printf("Funktion nicht verfuebar!\n\n");
 		}
 
