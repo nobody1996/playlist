@@ -70,30 +70,35 @@ void speichern(Song *playlist, int laenge) {
 
 /* Diese Funktion liest alle Attribute eines Songs
 aus der Kommandozeile und gibt einen struct vom Typ Song zurueck */
-Song einlesen( void ) {	
+Song einlesen(Song *playlist, int laenge) {
 	Song neu;
 	printf("\nim folgenden Format song eingeben: \nInterpret Titel Jahr minuten Sekunden (Leerzeichen im Titel/Interpret durch '_' ersetzen!)\n");
 	scanf("%s %s %hu %hu %hu", neu.interpret, neu.titel, &neu.jahr, &neu.minuten, &neu.sekunden);
 	printf("Eingelesen wurde: %s - %s, %hu, %hu:%hu", neu.interpret, neu.titel, neu.jahr, neu.minuten, neu.sekunden);
+
+	if (laenge < PLLEN) {
+		playlist[laenge] = neu;
+	}
+
 	return neu;
 }
 
 
 /* Diese Funktion gibt alle Attribute eines Songs aus */
-void ausgeben( Song *song, int i ) {
-	for (int a = 0; a <= i; a++) {
-		printf("\n%2d: %s - %s, %hu, %hu:%hu\n", a, song[a].interpret, song[a].titel, song[a].jahr, song[a].minuten, song[a].sekunden);
+void ausgeben(Song *song, int i) {
+	for (int a = 0; a < i; a++) {
+		printf("\n%2d: %s - %s, %hu, %hu:%hu", a, song[a].interpret, song[a].titel, song[a].jahr, song[a].minuten, song[a].sekunden);
 	}
 }
 /* Ende Teilaufgabe b) */
 
 
 /* Beginn Teilaufgabe c) */
- int loeschen( Song *playlist, int pos, int laenge ) {
+int loeschen(Song *playlist, int pos, int laenge) {
 
 
 
- }
+}
 /* Ende Teilaufgabe c) */
 
 
@@ -127,7 +132,7 @@ int main(void) {
 	int laenge = 0, fertig = 0;
 	char eingabe;
 	Song save;
-	
+
 
 	srand(time(NULL));
 
@@ -144,14 +149,16 @@ int main(void) {
 		printf("Eingabe: ");
 		scanf(" %c", &eingabe);
 		getchar();
-		
+
 		switch (eingabe) {
 		case 'l': laenge = laden(playlist); break;
 		case 's': speichern(playlist, laenge); break;
 		case 'b': fertig = 1; break;
-		case 'e': playlist[laenge]= einlesen();speichern(&playlist, laenge); break;
-		case 'a': ausgeben(&playlist, laenge);break;
+		case 'e': einlesen(playlist, laenge);++laenge; break;
+		case 'a': ausgeben(playlist, laenge);break;
 		case 'd':;break;
+
+
 		default: printf("Funktion nicht verfuebar!\n\n");
 		}
 
