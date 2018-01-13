@@ -71,23 +71,9 @@ void speichern(Song *playlist, int laenge) {
 /* Diese Funktion liest alle Attribute eines Songs
 aus der Kommandozeile und gibt einen struct vom Typ Song zurueck */
 Song einlesen( void ) {	
-	FILE* data;
-	string speicher[PLLEN];
-	data = fopen("playlist.dat", "r");
-	if (data == NULL) {
-		printf("\n ERROR\n");
-	}
-
-	for (int i = 0;i < 100;i++) {
-		fgets(speicher[i], 100, data);
-	}
-	fclose(data);
-	
-	for (int i = 0; i < 100; i++) {
-		sscanf("");
-
-	}
-
+	Song neu;
+	printf("im folgenden Format song eingeben: \nInterpret Titel Jahr minuten Sekunden (Leerzeichen im Titel/Interpret durch '_' ersetzen!)");
+	scanf("%s %s %d %d %d", neu.interpret, neu.titel, neu.jahr, neu.minuten, neu.sekunden);
 }
 
 
