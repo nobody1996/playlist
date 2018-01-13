@@ -1,4 +1,3 @@
-
 // Playlist-Verwaltung
 // Rahmenprogramm
 // Status: UnvollstÃĪndig
@@ -17,9 +16,9 @@ typedef char string[PLLEN];
 typedef struct {
 	string interpret;
 	string titel;
-	unsigned short jahr;
-	unsigned short minuten;
-	unsigned short sekunden;
+	int jahr;
+	int minuten;
+	int sekunden;
 
 } Song;
 /* Ende Teilaufgabe a) */
@@ -81,19 +80,20 @@ Song einlesen( void ) {
 
 
 /* Diese Funktion gibt alle Attribute eines Songs aus */
-void ausgeben( Song song, int i ) {
-
-	printf("\n%2d: %s - %s, %hu, %hu:%hu\n", i, song.interpret, song.titel, song.jahr, song.minuten, song.sekunden);
-
+void ausgeben( Song *song, int i ) {
+	for (int a = 0; a <= i; a++) {
+		printf("\n%2d: %s - %s, %hu, %hu:%hu\n", a, song[a].interpret, song[a].titel, song[a].jahr, song[a].minuten, song[a].sekunden);
+	}
 }
 /* Ende Teilaufgabe b) */
 
 
 /* Beginn Teilaufgabe c) */
-// int loeschen( Song *playlist, int pos, int laenge ) {
+ int loeschen( Song *playlist, int pos, int laenge ) {
 
 
-// }
+
+ }
 /* Ende Teilaufgabe c) */
 
 
@@ -142,7 +142,6 @@ int main(void) {
 		printf("i: interpret suchen\n");
 		printf("b: beenden\n\n");
 		printf("Eingabe: ");
-
 		scanf(" %c", &eingabe);
 		getchar();
 		
@@ -151,7 +150,8 @@ int main(void) {
 		case 's': speichern(playlist, laenge); break;
 		case 'b': fertig = 1; break;
 		case 'e': playlist[laenge]= einlesen();speichern(&playlist, laenge); break;
-		case 'a': ausgeben(playlist[laenge], laenge);break;
+		case 'a': ausgeben(&playlist, laenge);break;
+		case 'd':;break;
 		default: printf("Funktion nicht verfuebar!\n\n");
 		}
 
