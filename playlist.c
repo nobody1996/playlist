@@ -1,7 +1,3 @@
-// Playlist-Verwaltung
-// Rahmenprogramm
-// Status: UnvollstÃĪndig
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -21,13 +17,7 @@ typedef struct {
 	short sekunden;
 
 } Song;
-/* Ende Teilaufgabe a) */
 
-
-/* --- Vorgebene Funktionen, nicht aendern --- */
-
-/* Diese Funktion gibt einen zufaelligen Index
-zwischen 0 und laenge-1 zurueck */
 int zufallsIndex(int laenge) {
 	return (int)rand() % laenge;
 }
@@ -63,13 +53,8 @@ void speichern(Song *playlist, int laenge) {
 		printf("\nSpeichern fehlgeschlagen\n\n");
 	}
 }
-/* --- Ende der vorgebenen Funktionen --- */
 
 
-/* Beginn Teilaufgabe b) */
-
-/* Diese Funktion liest alle Attribute eines Songs
-aus der Kommandozeile und gibt einen struct vom Typ Song zurueck */
 Song einlesen( Song *playlist, int laenge ) {	
 	Song neu;
 	printf("\nim folgenden Format song eingeben: \nInterpret Titel Jahr minuten Sekunden (Leerzeichen im Titel/Interpret durch '_' ersetzen!)\n");
@@ -84,16 +69,16 @@ Song einlesen( Song *playlist, int laenge ) {
 }
 
 
-/* Diese Funktion gibt alle Attribute eines Songs aus */
+
 void ausgeben( Song *song, int i ) {
 	for (int a = 0; a < i; a++) {
 		printf("\n%2d: %s - %s, %hu, %hu:%hu", a, song[a].interpret, song[a].titel, song[a].jahr, song[a].minuten, song[a].sekunden);
 	}
 }
-/* Ende Teilaufgabe b) */
 
 
-/* Beginn Teilaufgabe c) */
+
+
  int loeschen( Song *playlist, int laenge ){
 	int pos;
 	printf("Welche Song moechten sie Loeschen?\nID:");
@@ -104,10 +89,10 @@ void ausgeben( Song *song, int i ) {
 	laenge--;
 	return laenge;
 }
-/* Ende Teilaufgabe c) */
 
 
-/* Beginn Teilaufgabe d) */
+
+
 void shuffle( Song *playlist, int laenge ) {
 	int zufall1;
 	int zufall2;
@@ -120,10 +105,10 @@ void shuffle( Song *playlist, int laenge ) {
 	}
 
 }
-/* Ende Teilaufgabe d) */
 
 
-/* Beginn Teilaufgabe e) */
+
+
 int jahrSuchen( Song *playlist, int laenge ) {
 	short jahr;
 	int anzahl1 = 0;
@@ -139,10 +124,10 @@ int jahrSuchen( Song *playlist, int laenge ) {
 	}
 	return anzahl1;
 }
-/* Ende Teilaufgabe e) */
 
 
-/* Beginn Teilaufgabe f) */
+
+
 int interpretSuchen( Song *playlist, int laenge ) {
 	string interpret;
 	int anzahl = 0;
@@ -156,7 +141,7 @@ int interpretSuchen( Song *playlist, int laenge ) {
 	}
 	return anzahl;
 }
-/* Ende Teilaufgabe f) */
+
 
 
 int main(void) {
