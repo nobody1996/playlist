@@ -8,7 +8,7 @@ enum { STRLEN = 100 };
 enum { PLLEN = 100 };
 typedef char string[PLLEN];
 
-/* Beginn Teilaufgabe a) */
+
 typedef struct {
 	string interpret;
 	string titel;
@@ -113,10 +113,8 @@ int jahrSuchen( Song *playlist, int laenge ) {
 	short jahr;
 	int anzahl1 = 0;
 	printf("Nach welchem Jahr Suchen sie?: ");
-//	printf("%hu ", playlist[0].jahr);
 	scanf("%hu", &jahr);
 	for (int i = 0; i < laenge; i++) {
-//		printf("%d ", playlist[i].jahr);
 		if (playlist[i].jahr == jahr){
 			printf("\n%2d: %s - %s, %hu, %hu:%hu", i, playlist[i].interpret, playlist[i].titel, playlist[i].jahr, playlist[i].minuten, playlist[i].sekunden);
 			anzahl1++;
